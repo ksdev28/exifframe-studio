@@ -150,6 +150,7 @@ function drawElegantFrame(
   customLogoImg: HTMLImageElement | null
 ) {
   const { imageWidth, imageHeight, canvasWidth, canvasHeight, barHeight } = config;
+  const showBrandLogo = options.showLogo && options.brandId !== 'none';
   
   // White background
   ctx.fillStyle = '#FFFFFF';
@@ -165,16 +166,16 @@ function drawElegantFrame(
   
   ctx.textAlign = 'center';
   
-  // Draw brand logo if enabled
-  if (options.showLogo && options.brandId !== 'none') {
-    const logoSize = barHeight * 0.35;
-    drawBrandLogo(ctx, options.brandId, imageWidth / 2, barY + barHeight * 0.22, logoSize, customLogoImg);
+  // Draw brand logo OR brand name text, not both
+  if (showBrandLogo) {
+    const logoSize = barHeight * 0.4;
+    drawBrandLogo(ctx, options.brandId, imageWidth / 2, barY + barHeight * 0.28, logoSize, customLogoImg);
+  } else {
+    // Brand name (centered) - only when no logo
+    ctx.fillStyle = '#333333';
+    ctx.font = `italic 400 ${brandFontSize}px Georgia, serif`;
+    ctx.fillText(data.make.toUpperCase(), imageWidth / 2, barY + barHeight * 0.32);
   }
-  
-  // Brand name (centered)
-  ctx.fillStyle = '#333333';
-  ctx.font = `italic 400 ${brandFontSize}px Georgia, serif`;
-  ctx.fillText(data.make.toUpperCase(), imageWidth / 2, barY + barHeight * 0.5);
   
   // Info line with location
   ctx.fillStyle = '#888888';
@@ -183,7 +184,7 @@ function drawElegantFrame(
   if (data.location) {
     infoText += `  |  ${data.location}`;
   }
-  ctx.fillText(infoText, imageWidth / 2, barY + barHeight * 0.7);
+  ctx.fillText(infoText, imageWidth / 2, barY + barHeight * 0.58);
   
   // Photographer and date
   let bottomText = data.date;
@@ -192,7 +193,7 @@ function drawElegantFrame(
   }
   ctx.font = `400 ${infoFontSize * 0.9}px Arial, sans-serif`;
   ctx.fillStyle = '#AAAAAA';
-  ctx.fillText(bottomText, imageWidth / 2, barY + barHeight * 0.88);
+  ctx.fillText(bottomText, imageWidth / 2, barY + barHeight * 0.8);
   
   ctx.textAlign = 'left';
 }
@@ -325,6 +326,7 @@ function drawInstaFrame(
   customLogoImg: HTMLImageElement | null
 ) {
   const { imageWidth, imageHeight, canvasWidth, canvasHeight, imageX, imageY, barHeight } = config;
+  const showBrandLogo = options.showLogo && options.brandId !== 'none';
   
   // White background
   ctx.fillStyle = '#FFFFFF';
@@ -341,21 +343,21 @@ function drawInstaFrame(
   
   ctx.textAlign = 'center';
   
-  // Brand logo if enabled
-  if (options.showLogo && options.brandId !== 'none') {
-    const logoSize = barHeight * 0.25;
-    drawBrandLogo(ctx, options.brandId, canvasWidth / 2, textY + barHeight * 0.18, logoSize, customLogoImg);
+  // Brand logo OR brand text, not both
+  if (showBrandLogo) {
+    const logoSize = barHeight * 0.3;
+    drawBrandLogo(ctx, options.brandId, canvasWidth / 2, textY + barHeight * 0.2, logoSize, customLogoImg);
+  } else {
+    // Brand (centered) - only when no logo
+    ctx.fillStyle = '#333333';
+    ctx.font = `600 ${brandFontSize}px Arial, sans-serif`;
+    ctx.fillText(data.make.toUpperCase(), canvasWidth / 2, textY + barHeight * 0.25);
   }
-  
-  // Brand (centered)
-  ctx.fillStyle = '#333333';
-  ctx.font = `600 ${brandFontSize}px Arial, sans-serif`;
-  ctx.fillText(data.make.toUpperCase(), canvasWidth / 2, textY + barHeight * 0.4);
   
   // Settings
   ctx.fillStyle = '#666666';
   ctx.font = `400 ${settingsFontSize}px "Courier New", monospace`;
-  ctx.fillText(data.settings, canvasWidth / 2, textY + barHeight * 0.58);
+  ctx.fillText(data.settings, canvasWidth / 2, textY + barHeight * 0.48);
   
   // Location and date
   let bottomText = data.date;
@@ -364,13 +366,13 @@ function drawInstaFrame(
   }
   ctx.fillStyle = '#999999';
   ctx.font = `400 ${dateFontSize}px Arial, sans-serif`;
-  ctx.fillText(bottomText, canvasWidth / 2, textY + barHeight * 0.74);
+  ctx.fillText(bottomText, canvasWidth / 2, textY + barHeight * 0.68);
   
   // Photographer
   if (data.photographer) {
     ctx.fillStyle = '#666666';
     ctx.font = `400 ${dateFontSize}px Arial, sans-serif`;
-    ctx.fillText(`© ${data.photographer}`, canvasWidth / 2, textY + barHeight * 0.9);
+    ctx.fillText(`© ${data.photographer}`, canvasWidth / 2, textY + barHeight * 0.88);
   }
   
   ctx.textAlign = 'left';

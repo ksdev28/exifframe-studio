@@ -90,21 +90,25 @@ function ClassicFrame({ imageUrl, data, options }: FrameComponentProps) {
 
 // Style B: Elegant Hasselblad
 function ElegantFrame({ imageUrl, data, options }: FrameComponentProps) {
+  const showBrandLogo = options.showLogo && options.brandId !== 'none';
+  
   return (
     <div className="w-full bg-frame-white flex flex-col shadow-elegant">
       <div className="relative w-full">
         <img src={imageUrl} alt="Preview" className="w-full h-auto block" />
       </div>
       <div className="py-5 px-4 flex flex-col items-center text-center">
-        {options.showLogo && options.brandId !== 'none' && (
+        {/* Show logo OR text brand name, not both */}
+        {showBrandLogo ? (
           <div className="mb-2">
-            <BrandLogo brand={options.brandId} size={24} customLogoUrl={options.customLogoUrl} />
+            <BrandLogo brand={options.brandId} size={28} customLogoUrl={options.customLogoUrl} />
           </div>
+        ) : (
+          <p className="font-display text-lg tracking-[0.2em] text-frame-text-dark uppercase mb-2">
+            {data.make}
+          </p>
         )}
-        <p className="font-display text-lg tracking-[0.2em] text-frame-text-dark uppercase">
-          {data.make}
-        </p>
-        <div className="mt-2 flex items-center gap-2 text-xs text-frame-text-muted">
+        <div className="flex items-center gap-2 text-xs text-frame-text-muted">
           <span>{data.model}</span>
           <span className="text-frame-text-muted/40">|</span>
           <span>{data.settings}</span>
@@ -195,21 +199,25 @@ function BadgeFrame({ imageUrl, data, options }: FrameComponentProps) {
 
 // Style E: Insta / Passe-partout
 function InstaFrame({ imageUrl, data, options }: FrameComponentProps) {
+  const showBrandLogo = options.showLogo && options.brandId !== 'none';
+  
   return (
     <div className="w-full bg-frame-white p-3 shadow-elegant">
       <div className="relative w-full">
         <img src={imageUrl} alt="Preview" className="w-full h-auto block rounded-sm" />
       </div>
       <div className="pt-4 pb-2 flex flex-col items-center text-center">
-        {options.showLogo && options.brandId !== 'none' && (
+        {/* Show logo OR text brand name, not both */}
+        {showBrandLogo ? (
           <div className="mb-2">
-            <BrandLogo brand={options.brandId} size={20} customLogoUrl={options.customLogoUrl} />
+            <BrandLogo brand={options.brandId} size={24} customLogoUrl={options.customLogoUrl} />
           </div>
+        ) : (
+          <p className="text-frame-text-dark text-xs font-semibold tracking-[0.2em] uppercase mb-1">
+            {data.make}
+          </p>
         )}
-        <p className="text-frame-text-dark text-xs font-semibold tracking-[0.2em] uppercase">
-          {data.make}
-        </p>
-        <p className="mt-1 text-[11px] text-frame-text-muted font-mono">
+        <p className="text-[11px] text-frame-text-muted font-mono">
           {data.settings}
         </p>
         <div className="mt-1 flex items-center gap-2 text-[10px] text-frame-text-muted/70">
