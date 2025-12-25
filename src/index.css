@@ -2,95 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ExifFrame Design System - Dark Photography Tool Aesthetic */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core palette - dark charcoal photography tool aesthetic */
+    --background: 220 13% 10%;
+    --foreground: 210 20% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 13% 13%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 13% 13%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Warm neutral accent */
+    --primary: 32 90% 55%;
+    --primary-foreground: 220 13% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 210 15% 75%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 10% 16%;
+    --muted-foreground: 215 12% 55%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 220 10% 20%;
+    --accent-foreground: 210 20% 90%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 10% 20%;
+    --input: 220 10% 18%;
+    --ring: 32 90% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.625rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Frame colors */
+    --frame-white: 0 0% 100%;
+    --frame-black: 0 0% 5%;
+    --frame-text-dark: 0 0% 20%;
+    --frame-text-light: 0 0% 95%;
+    --frame-text-muted: 0 0% 55%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Leica red accent */
+    --leica-red: 0 75% 50%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Nikon yellow */
+    --nikon-yellow: 48 95% 55%;
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* Sidebar */
+    --sidebar-background: 220 13% 11%;
+    --sidebar-foreground: 210 15% 75%;
+    --sidebar-primary: 32 90% 55%;
+    --sidebar-primary-foreground: 220 13% 8%;
+    --sidebar-accent: 220 10% 16%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 10% 18%;
+    --sidebar-ring: 32 90% 55%;
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.4), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.4), 0 4px 6px -4px hsl(0 0% 0% / 0.3);
+    --shadow-elegant: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 220 13% 10%;
+    --foreground: 210 20% 95%;
+    --card: 220 13% 13%;
+    --card-foreground: 210 20% 95%;
+    --popover: 220 13% 13%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 32 90% 55%;
+    --primary-foreground: 220 13% 8%;
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 210 15% 75%;
+    --muted: 220 10% 16%;
+    --muted-foreground: 215 12% 55%;
+    --accent: 220 10% 20%;
+    --accent-foreground: 210 20% 90%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 10% 20%;
+    --input: 220 10% 18%;
+    --ring: 32 90% 55%;
   }
 }
 
@@ -100,6 +99,127 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer components {
+  /* Typography for frames */
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-mono-data {
+    font-family: 'JetBrains Mono', 'SF Mono', monospace;
+  }
+
+  /* Upload zone styling */
+  .upload-zone {
+    @apply relative border-2 border-dashed border-border rounded-xl p-8 transition-all duration-300;
+    @apply hover:border-primary/50 hover:bg-accent/30;
+  }
+
+  .upload-zone.active {
+    @apply border-primary bg-primary/10;
+  }
+
+  /* Frame preview container */
+  .frame-preview-container {
+    @apply relative bg-muted/50 rounded-xl overflow-hidden;
+    @apply flex items-center justify-center;
+    background-image: 
+      linear-gradient(45deg, hsl(var(--muted)) 25%, transparent 25%),
+      linear-gradient(-45deg, hsl(var(--muted)) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, hsl(var(--muted)) 75%),
+      linear-gradient(-45deg, transparent 75%, hsl(var(--muted)) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  }
+
+  /* Frame template thumbnails */
+  .frame-template-btn {
+    @apply relative aspect-[3/4] rounded-lg overflow-hidden border-2 border-transparent;
+    @apply transition-all duration-200 cursor-pointer;
+    @apply hover:border-primary/50 hover:scale-105;
+  }
+
+  .frame-template-btn.selected {
+    @apply border-primary ring-2 ring-primary/30;
+  }
+
+  /* Sidebar sections */
+  .sidebar-section {
+    @apply p-4 border-b border-border last:border-b-0;
+  }
+
+  .sidebar-section-title {
+    @apply text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3;
+  }
+
+  /* Input styling */
+  .metadata-input {
+    @apply bg-input border-border text-foreground placeholder:text-muted-foreground;
+    @apply focus:ring-1 focus:ring-primary focus:border-primary;
+  }
+
+  /* Subtle glow effect */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Text shadow for overlay text */
+  .text-shadow {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   }
 }
