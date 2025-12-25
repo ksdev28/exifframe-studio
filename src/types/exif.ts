@@ -1,3 +1,5 @@
+import type { BrandId } from '@/components/BrandLogos';
+
 export interface ExifPayload {
   make: string;
   model: string;
@@ -8,6 +10,9 @@ export interface ExifPayload {
   iso: string;
   date: string;
   settings: string; // Pre-formatted: "35mm f/1.4 1/250s ISO160"
+  // New fields
+  photographer: string;
+  location: string;
 }
 
 export type FrameStyle = 
@@ -30,3 +35,9 @@ export const FRAME_CONFIGS: FrameConfig[] = [
   { id: 'badge', name: 'Badge', description: 'Yellow badge style' },
   { id: 'insta', name: 'Passe-partout', description: 'White border all around' },
 ];
+
+export interface FrameOptions {
+  brandId: BrandId;
+  customLogoUrl: string | null;
+  showLogo: boolean;
+}

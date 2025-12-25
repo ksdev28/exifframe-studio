@@ -13,6 +13,8 @@ const DEFAULT_PAYLOAD: ExifPayload = {
   iso: 'ISO400',
   date: new Date().toISOString().split('T')[0].replace(/-/g, '.'),
   settings: '50mm f/2.8 1/125s ISO400',
+  photographer: '',
+  location: '',
 };
 
 /**
@@ -196,6 +198,8 @@ export function useExifParser() {
         iso,
         date,
         settings,
+        photographer: '',
+        location: '',
       };
 
       setIsLoading(false);
